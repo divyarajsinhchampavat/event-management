@@ -1,0 +1,41 @@
+/* src/pages/Home.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  nav a, nav Link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #007bff;
+    background-color: #e9ecef;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav a:hover, nav Link:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
