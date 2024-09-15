@@ -5,7 +5,7 @@ export interface Event {
     startDate: string;
     endDate: string;
     totalGuests?: number;
-    images: string[] | null;
+    images: any[] | null ;
   }
   
   export interface User {

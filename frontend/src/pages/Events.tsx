@@ -18,7 +18,7 @@ const Events: React.FC = () => {
     const fetchEvents = async (nextPage: number) => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:3000/events', {
+            const response = await axios.get('http://localhost:4000/events', {
                 params: {
                     page: nextPage, // Pass the current page to backend
                     limit: 10, // You can set the limit as per your need
@@ -66,7 +66,7 @@ const Events: React.FC = () => {
 
     const handleDelete = async (id: number) => {
         try {
-            await axios.delete(`http://localhost:3000/events/${id}`, {
+            await axios.delete(`http://localhost:4000/events/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -131,7 +131,7 @@ const Events: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {events.map((event) => (
+                            {events.map((event) => (                                
                                 <tr key={event.id}>
                                     <td>{event.name}</td>
                                     <td>{event.description}</td>
@@ -139,13 +139,18 @@ const Events: React.FC = () => {
                                     <td>{new Date(event.endDate).toLocaleDateString()}</td>
                                     <td>
                                         {event.images && event.images.length > 0 ? (
-                                            event.images.map((img, index) => (
-                                                <img key={index} src={`http://localhost:3000${img}`} alt={`Event ${event.id}`} style={{ width: '100px', height: 'auto', marginRight: '10px' }} />
+                                            event.images.map((img, index) => (        
+                                            <img
+                                                key={index}
+                                                src={img.images} 
+                                                alt={`Event ${event.id}`}
+                                                style={{ width: '100px', height: 'auto', marginRight: '10px' }}
+                                            />
                                             ))
                                         ) : (
                                             <p>No images</p>
                                         )}
-                                    </td>
+                                        </td>
                                     <td>
                                         <Link to={`/events/edit/${event.id}`}>
                                             <button>Edit</button>

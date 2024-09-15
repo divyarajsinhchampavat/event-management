@@ -1,7 +1,6 @@
 import { Controller, Post, Get, Put, Delete, Param, Body, Req, UseGuards, UseInterceptors, UploadedFiles, Query } from '@nestjs/common';
 import { EventService } from './events.service';
 import { CreateEventDto} from './dto/create-event.dto';
-// import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
@@ -18,8 +17,8 @@ export class EventController {
     @Body() createEventDto: CreateEventDto,
     @Req() req,
     @UploadedFiles() images: Express.Multer.File[]
-  ) {  
-    const imageUrls = images.map(file => `/uploads/${file.filename}`);
+  ) {    
+    const imageUrls = images.map(file => `/${file.filename}`);
     createEventDto.images = imageUrls;
     return this.eventService.createEvent(createEventDto, req.user.id);
   }
@@ -46,6 +45,7 @@ export class EventController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   async getEvents(
   @Query('page') page: number,
   @Query('limit') limit: number,
@@ -54,7 +54,8 @@ export class EventController {
   @Query('search') search: any,
   @Query('startDate')startDate:any,
   @Query('endDate')endDate:any,
+  @Req() req
 ) {
-  return this.eventService.getEvents(page, limit, sortBy, sortOrder, search,startDate,endDate);
+  return this.eventService.getEvents(req.user.id,page, limit, sortBy, sortOrder, search,startDate,endDate);
 }
 }

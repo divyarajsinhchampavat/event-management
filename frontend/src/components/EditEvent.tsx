@@ -13,7 +13,7 @@ const EditEvent: React.FC = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/events/${id}`, {
+                const response = await axios.get(`http://localhost:4000/events/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
@@ -37,7 +37,7 @@ const EditEvent: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3000/events/${id}`, event, {
+            await axios.put(`http://localhost:4000/events/${id}`, event, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, AfterLoad, OneToMany } from 'typeorm';
 import { User } from '../../users/entities/user.entity';  
+import { Images } from '../../common/entities/images.entity';
 
 @Entity()
 export class Event {
@@ -23,7 +24,7 @@ export class Event {
 
   @ManyToOne(() => User, user => user.events)
   creator: User;
-
-  @Column('text', { array: true, nullable: true })
-  images?: string[];
+  
+  @OneToMany(()=> Images, image=> image.event)
+  images: Images[]
 }

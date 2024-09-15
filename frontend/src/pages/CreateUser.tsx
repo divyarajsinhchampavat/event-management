@@ -15,21 +15,22 @@ const CreateUser: React.FC = () => {
 
     try {
       // Create user
-      const response = await axios.post('http://localhost:3000/users', {
+      const response = await axios.post('http://localhost:4000/users', {
         username,
         password,
         email,
       });
 
+      
     
       // Store token in local storage
       localStorage.setItem('token', response.data.access_token);
 
       // Redirect to events page
       navigate('/events');
-    } catch (err) {
-      setError('Failed to create user or login.');
-      console.error(err);
+    } catch (error:any) {
+      setError(error?.response?.data?.message||'Failed to create user or login.');
+      console.error(error);
     }
   };
 

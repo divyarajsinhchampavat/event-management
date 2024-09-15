@@ -17,4 +17,5 @@ export class User {
 
   @OneToMany(() => Event,  event => event.creator)
   events: Event[];
+  
 }

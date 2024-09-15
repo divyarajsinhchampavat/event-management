@@ -2,10 +2,10 @@ import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity'; 
 import { Event } from './events/entities/event.entity';
 import { join } from 'path';
-
-
+import 'dotenv/config'; 
 import { Injectable } from '@nestjs/common';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Images } from './common/entities/images.entity';
 
 
 @Injectable()
@@ -34,7 +34,7 @@ export const AppDataSource  = new DataSource({
   database: process.env.DATABASE_NAME,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
-  entities: [User, Event],
+  entities: [User, Event,Images],
   migrations: [join(__dirname, '/migrations/*{.ts,.js}')], // Path where migrations will be stored
   synchronize: false,  // Since we are using migrations, we don't need synchronize
   logging: true,

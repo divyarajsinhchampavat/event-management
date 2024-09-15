@@ -28,7 +28,7 @@ export class UsersService {
       email:email
     });
     this.userRepository.save(user);
-    const loginResponse = await axios.post('http://localhost:3000/auth/login', {
+    const loginResponse = await axios.post('http://localhost:4000/auth/login', {
       username: username,
       password: password,
     });

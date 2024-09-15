@@ -28,7 +28,7 @@ const CreateEvent: React.FC = () => {
     images.forEach(image => formData.append('images', image));
 
     try {
-      await axios.post(`http://localhost:3000/events`, formData, {
+      await axios.post(`http://localhost:4000/events`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`
