@@ -40,6 +40,10 @@ DATABASE_USERNAME = postgres
 DATABASE_PASSWORD = G@ll@gher
 JWT_SECRET=your_jwt_secret
 ```
+## Genrate Database Migrations
+ ```bash
+ npm run migration:generate yourMigrationName
+```
 
 ## Run Database Migrations
   ```bash
