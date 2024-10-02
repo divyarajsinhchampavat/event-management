@@ -18,7 +18,7 @@ The Event Management App is a full-stack application designed to manage events e
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/event-management.git
+   [git clone https://github.com/yourusername/event-management.git](https://github.com/divyarajsinhchampavat/event-management.git)
    cd event-management/backend
 
 
